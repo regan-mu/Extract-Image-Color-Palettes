@@ -61,7 +61,7 @@ def home():
         # Save the uploaded image
         img_name, img_path = save_img(form.image.data)
         # Extract the RGB colors from the image
-        colors_x = extcolors.extract_from_path(img_path, tolerance=12, limit=10)
+        colors_x = extcolors.extract_from_path(img_path, tolerance=12, limit=11)
         # Convert rgb to Hex
         hex_colors = extract_hex(colors_x)
     return render_template('index.html', form=form, hex_colors=hex_colors, image=img_name)

@@ -24,15 +24,17 @@ body {
     height: auto;
     margin: 0 0 1rem;
 }
-.container .inner-container .colors .palette {
-    width: 50%;
-    height: 4rem;
-}
 .container .inner-container .colors .bottom {
     display: grid;
     grid-template-columns: 1fr 2fr;
 }
-.container .inner-container .colors hr {
-    background: gray;
-    margin: 0;
+.container .inner-container .colors .bottom .palettes-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+    row-gap: 1rem;
+}
+.container .inner-container .colors .bottom .palettes-section .palette {
+    width: 100%;
+    height: 4rem;
 }
