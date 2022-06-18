@@ -1,0 +1,39 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}
+    Color Palettes
+{% endblock title %}
+{% block styles %}
+    {{ super() }}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock styles %}
+{% block content %}
+    <div class="container">
+        <div class="inner-container">
+            <h3> Extract the Dominant colors palettes in an image</h3>
+            <div class="colors">
+                {% if image %}
+                    <img src="/static/images_uploaded/{{ image }}">
+                {% else %}
+                    <img src="/static/images_uploaded/work.jpg">
+                {% endif %}
+                <div class="bottom">
+                    <div class="upload-form">
+                        {{ wtf.quick_form(form, novalidate=True, role='form', method='post', enctype='multipart/form-data',  button_map={'submit':'primary'}) }}
+                    </div>
+                    <div class="palettes-section">
+                        {% if hex_colors %}
+                            {% for color in hex_colors %}
+                                <div class="palette" style="background-color: {{ color }}">{{ color }}</div>
+                                <hr />
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
